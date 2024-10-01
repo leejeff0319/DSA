@@ -48,6 +48,15 @@
         "tuple": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "algorithm": "cpp"
-    }
+        "algorithm": "cpp",
+        "*.py": "python" 
+    },
+    "python.pythonPath": "C:/Users/Jeff/AppData/Local/Programs/Python/Python311/python.exe",   // Path to Python 3 interpreter
+    "python.analysis.extraPaths": [
+        "./"   // Ensure VSCode uses the correct paths to find Python modules
+    ],
+    "python.terminal.activateEnvironment": true, // Activate Python virtual environment if used
+    "python.autoComplete.extraPaths": [
+        "./"   // Helps Python autocomplete in VSCode find files in the current folder
+    ]
 }

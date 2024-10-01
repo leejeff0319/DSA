@@ -9,7 +9,7 @@ with open('profiling_data.txt', 'r') as file:
     for line in file:
         length, timePerInsert = line.split()    # split at variables into x and y at whitespace
         x.append(int(length))
-        y.append(int(timePerInsert))
+        y.append(float(timePerInsert))
 
 # Create Scatter plot
 plt.scatter(x, y, color='green', label="Seconds per Insert")
