@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iomanip>
+#include <cmath>
 
 void appendTerm(List *pPolynomial, double constant) {
     ListElmt *element = pPolynomial->tail;              // Get tail of list
@@ -24,7 +25,7 @@ void appendTerm(List *pPolynomial, double constant) {
 }
 
 void display(List *pPolynomial) {
-    ListElmt *element = pPolynomial->head;               // Start with the first term
+    ListElmt *element = pPolynomial->head;              // Start with the first term
     
     int exponent = list_size(pPolynomial) -1;           // Starting/highest exponent is number of exponents -1 because final term is a constant
     int firstTerm = true;
@@ -63,8 +64,22 @@ void display(List *pPolynomial) {
     std::cout << std::endl;
 }
 
-double evaluate() {
-    return 0;
+double evaluate(List *pPolynomial, double x) {
+    ListElmt *element = pPolynomial->head;
+    int exponent = list_size(pPolynomial) -1;
+    double result = 0.0;
+    while (element != NULL) {
+        double coeff = *(double *)(element->data);       // Coefficient is the current term in the list
+        
+        // Calculate each term and add to result
+        result += coeff * pow(x, exponent);
+
+        // Move to the next term in list and repeat
+        element = element->next;
+        exponent--;
+    }
+
+    return result;
 }
 
 int main() {
@@ -81,6 +96,10 @@ int main() {
 
     // Display polynomial
     display(&polynomial);
+
+    // Evaluate polynomial for x= 7.0
+    double result = evaluate(&polynomial, 7.0);
+    std::cout << "Result: " << result << '\n';
 
     // Clean up list
     list_destroy(&polynomial);
