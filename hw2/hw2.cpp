@@ -43,7 +43,7 @@ void display(List *pPolynomial) {
             }
             
             // Print whole numbers with ".0"
-            std::cout << std::fixed << std::setprecision(1); 
+            // std::cout << std::fixed << std::setprecision(1); 
 
             // Print correct exponent values on x
             if (exponent == 0) {        
@@ -83,26 +83,53 @@ double evaluate(List *pPolynomial, double x) {
 }
 
 int main() {
-    List polynomial;
+    List test1, test2, test3, test4;
 
-    // Initialize polynomial
-    list_init(&polynomial, free);                       // clean up data
+    // Initialize polynomials
+    list_init(&test1, free);
+    list_init(&test2, free);
+    list_init(&test3, free);
+    list_init(&test4, free);
 
-    // Append terms
-    appendTerm(&polynomial, 6.0);
-    appendTerm(&polynomial, 0.0);
-    appendTerm(&polynomial, -5.3);
-    appendTerm(&polynomial, 3.1);
+    // x + 1.0                                      x = 1.0
+    appendTerm(&test1, 1);
+    appendTerm(&test1, 1.0);
+    std::cout << "Test 1: ";
+    display(&test1);
+    std::cout << "= " << evaluate(&test1, 1.0) << " when x = 1.0" << '\n' << std::endl;
 
-    // Display polynomial
-    display(&polynomial);
+    // x^2 - 1.0                                    x = 2.03
+    appendTerm(&test2, 1);
+    appendTerm(&test2, 0.0);
+    appendTerm(&test2, -1.0);
+    std::cout << "Test 2: ";
+    display(&test2);
+    std::cout << "= " << evaluate(&test2, 2.03) << " when x = 2.03" << '\n' << std::endl;
 
-    // Evaluate polynomial for x= 7.0
-    double result = evaluate(&polynomial, 7.0);
-    std::cout << "Result: " << result << '\n';
+    // -3.0x^3 + 0.5x^2 -2.0x                       x = 05.0
+    appendTerm(&test3, -3.0);
+    appendTerm(&test3, 0.5);
+    appendTerm(&test3, -2.0);
+    appendTerm(&test3, 0);
+     std::cout << "Test 3: ";
+    display(&test3);
+    std::cout << "= " << evaluate(&test3, 5.0) << " when x = 05.0" << '\n' << std::endl;
 
-    // Clean up list
-    list_destroy(&polynomial);
+    // -0.3125x^4 - 9.915x^2 - 7.75x - 40.0         x = 123.45
+    appendTerm(&test4, -0.3125);
+    appendTerm(&test4, 0.0);
+    appendTerm(&test4, -9.915);
+    appendTerm(&test4, -7.75);
+    appendTerm(&test4, -40.0);
+     std::cout << "Test 4: ";
+    display(&test4);
+    std::cout << "= " << std::fixed << evaluate(&test4, 123.45) << " when x = 123.45" << '\n' << std::endl;
+
+    // Clean up lists
+    list_destroy(&test1);
+    list_destroy(&test2);
+    list_destroy(&test3);
+    list_destroy(&test4);
 
     return 0;
 }
