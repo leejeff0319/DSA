@@ -62,7 +62,7 @@ void displayCars(const Car cars[], int numCars) {
 int main() {
     Car cars[] = {
         {"Toyota", "Camry", 33},
-        {"Ford", "Focus", 40},`
+        {"Ford", "Focus", 40},
         {"Honda", "Accord", 34},
         {"Ford", "Mustang", 31},
         {"Honda", "Civic", 39},
