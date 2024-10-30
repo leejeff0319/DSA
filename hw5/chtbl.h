@@ -10,23 +10,19 @@
 
 /* Define a structure for chained hash tables. */
 typedef struct CHTbl_ {
-
     int buckets;
-
     int (*h)(const void *key);
     int (*match)(const void *key1, const void *key2);
     void (*destroy)(void *data);
-    double maxLoadFactor;
-    double resizeMultiplier;
-
     int size;
     List *table;
-
+    double maxLoadFactor;
+    double resizeMultiplier;
 } CHTbl;
 
 /* Public Interface */
 int chtbl_init(CHTbl *htbl, int buckets, int(*h)(const void *key), int(*match)(
-        const void *key1, const void *key2), void(*destroy)(void *data),
+        const void *key1, const void *key2), void(*destroy)(void*data), 
         double maxLoadFactor, double resizeMultiplier);
 
 void chtbl_destroy(CHTbl *htbl);
