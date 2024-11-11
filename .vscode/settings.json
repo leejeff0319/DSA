@@ -49,7 +49,9 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "algorithm": "cpp",
-        "*.py": "python" 
+        "*.py": "python",
+        "string.h": "c",
+        "chtbl.h": "c"
     },
     "python.pythonPath": "C:/Users/Jeff/AppData/Local/Programs/Python/Python311/python.exe",   // Path to Python 3 interpreter
     "python.analysis.extraPaths": [
